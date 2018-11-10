@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Encryption</title>
+<script type="text/javascript" src="aes.js"></script>
+<script type="text/javascript">
+
+function encrypt()
+{
+	var messageToEncrypt=document.getElementById("encryptOrDecriptMessage").value;
+	
+	var key=document.getElementById("key").value;
+	
+	var encrypted = CryptoJS.AES.encrypt(messageToEncrypt, key);
+	
+	document.getElementById("result").innerHTML=encrypted;
+}
+
+function decrypt()
+{
+	var messageToDecrypt=document.getElementById("encryptOrDecriptMessage").value;
+	
+	var key=document.getElementById("key").value;
+	
+	var decrypted = CryptoJS.AES.decrypt(messageToDecrypt, key);
+	
+	document.getElementById("result").innerHTML=decrypted.toString(CryptoJS.enc.Utf8);
+}
+
+</script>
+<style type="text/css">
+.containerDiv
+{
+	width: 100%;
+	height:100%;
+	float: left;	
+}
+
+#encryptOrDecriptMessage
+{
+	width: 95%;
+    height: 25%;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+#key
+{
+	width: 95%;
+    height: 15%;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+.ecryptButton
+{
+	width: 5%;
+	height: 5%;
+	float: left;
+}
+
+.decryptButton
+{
+	width: 5%;
+	height: 5%;
+	float: left;
+}
+
+.buttonsContainer
+{
+	width: 95%;
+    height: 15%;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+#result
+{
+	width: 95%;
+    height: 25%;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+</style>
+</head>
+<body>
+<div  class="containerDiv">
+	<textarea rows="5" cols="5" id="encryptOrDecriptMessage" placeholder="Message to Encrypt or Decrypt"></textarea>
+	<input type="text" id="key" placeholder="Please enter Key to ecrypt/decrypt">
+	<div class="buttonsContainer">
+	<input type="button" value="Encrypt" onclick="encrypt()">
+	<input type="button" value="Decrypt" onclick="decrypt()">
+	</div>
+	
+	<textarea rows="5" cols="5" id="result" placeholder="Result" readonly="readonly"></textarea>
+</div>
+</body>
+</html>
