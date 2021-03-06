@@ -12,7 +12,7 @@ function encrypt()
 	
 	var key=document.getElementById("key").value;
 	
-	var encrypted = CryptoJS.RC4Drop.encrypt(messageToEncrypt, key, { drop: 3072/16 });
+	var encrypted = CryptoJS.AES.encrypt(messageToEncrypt, key);
 	
 	document.getElementById("result").innerHTML=encrypted;
 }
@@ -23,7 +23,7 @@ function decrypt()
 	
 	var key=document.getElementById("key").value;
 	
-	var decrypted = CryptoJS.RC4Drop.decrypt(messageToDecrypt, key,{ drop: 3072/16 });
+	var decrypted = CryptoJS.AES.decrypt(messageToDecrypt, key);
 	
 	document.getElementById("result").innerHTML=decrypted.toString(CryptoJS.enc.Utf8);
 }
