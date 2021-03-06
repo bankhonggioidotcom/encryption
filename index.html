@@ -12,7 +12,7 @@ function encrypt()
 	
 	var key=document.getElementById("key").value;
 	
-	var encrypted = CryptoJS.AES.encrypt(messageToEncrypt, key);
+	var encrypted = CryptoJS.AES.encrypt(messageToEncrypt, key,{ mode: CryptoJS.mode.CTR);
 	
 	document.getElementById("result").innerHTML=encrypted;
 }
@@ -23,7 +23,7 @@ function decrypt()
 	
 	var key=document.getElementById("key").value;
 	
-	var decrypted = CryptoJS.AES.decrypt(messageToDecrypt, key);
+	var decrypted = CryptoJS.AES.decrypt(messageToDecrypt, key,{ mode: CryptoJS.mode.CTR);
 	
 	document.getElementById("result").innerHTML=decrypted.toString(CryptoJS.enc.Utf8);
 }
